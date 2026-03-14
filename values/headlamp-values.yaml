@@ -70,7 +70,7 @@ config:
     # -- OIDC client secret
     clientSecret: "VPKhom0IHR45HqcBvWzSEPyMk936ecTr"
     # -- OIDC issuer URL
-    issuerURL: "http://127.0.0.1/realms/headlamp-realm"
+    issuerURL: "http://keycloak.keycloak.svc.cluster.local:8080/realms/headlamp-realm"
     # -- OIDC scopes to be used
     scopes: "openid,email,profile"
     # -- OIDC callback URL
@@ -79,7 +79,7 @@ config:
     # -- OIDC client to be used during token validation
     validatorClientID: "headlamp-client"
     # -- OIDC Issuer URL to be used during token validation
-    validatorIssuerURL: "http://127.0.0.1/realms/headlamp-realm"
+    validatorIssuerURL: "http://keycloak.keycloak.svc.cluster.local:8080/realms/headlamp-realm"
     # -- Use 'access_token' instead of 'id_token' when authenticating using OIDC
     useAccessToken: false
     # -- Use PKCE (Proof Key for Code Exchange) for enhanced security in OIDC flow
