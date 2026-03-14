@@ -7,7 +7,7 @@ Kubernetes deployments are fully automated
 This setup demonstrates how to deploy Headlamp using the ArgoCD App of Apps pattern.
 
 # 📖 Medium Article
-A detailed step-by-step explanation is available in the Medium article:
+###A detailed step-by-step explanation is available in the Medium article:
 👉 Read the full guide: https://medium.com/@rahulbnp52/deploy-headlamp-using-github-actions-and-argocd-app-of-apps-pattern-helm-based-gitops-03c9683b462a
 
 # ⚙️ Prerequisites
