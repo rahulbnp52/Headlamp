@@ -1266,6 +1266,7 @@ postgresql:
     existingSecret: "keycloak-postgresql"
     secretKeys:
       userPasswordKey: password
+      userKey: username
   architecture: standalone
 ## External PostgreSQL configuration
 ## All of these values are only used when postgresql.enabled is set to false
