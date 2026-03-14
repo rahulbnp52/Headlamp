@@ -96,13 +96,36 @@ applications:
       name: headlamp
     source:
       <<: *source-repo
-      path: headlamp-charts
+      path: charts/headlamp
       helm:
         releaseName: headlamp
         valueFiles:
-          - ../headlamp-values/values.yaml
+          - ../../values/headlamp-values.yaml
     destination:
       <<: *default-destination
       namespace: kube-system
     syncPolicy:
       <<: *common-sync-policy
+
+
+  # =================================================================================================
+  # 3️⃣ Child App: Keycloak
+  # -------------------------------------------------------------------------------------------------
+  keycloak:
+    <<: *common-config
+    metadata:
+      name: keycloak
+    source:
+      <<: *source-repo
+      path: charts/keycloak
+      helm:
+        releaseName: keycloak
+        valueFiles:
+          - ../../values/keycloak-values.yaml
+    destination:
+      <<: *default-destination
+      namespace: keycloak
+    syncPolicy:
+      <<: *common-sync-policy
+
+      
