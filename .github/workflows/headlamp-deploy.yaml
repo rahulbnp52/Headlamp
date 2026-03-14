@@ -23,14 +23,14 @@ jobs:
       - name: Helm Lint
         run: |
           echo "Running Helm lint..."
-          helm lint ./argocd-apps
+          helm lint ./argocd-apps 
 
-      # - name: Helm Template
-      #   run: |
-      #     echo "Rendering Helm template..."
-      #     helm template headlamp-argocd ./argocd-apps \
-      #       -f apps/headlamp-app.yaml \
-      #       --namespace argocd
+      - name: Helm Template
+        run: |
+          echo "Rendering Helm template..."
+          helm template headlamp-argocd ./argocd-apps \
+            -f apps/headlamp-app.yaml \
+            --namespace argocd
 
   deploy:
     name: Deploy-helm-App-of-Apps
