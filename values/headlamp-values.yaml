@@ -68,7 +68,7 @@ config:
     # -- OIDC client ID
     clientID: "headlamp-client"
     # -- OIDC client secret
-    clientSecret: "20mQeXXlC0uYMLjgLjBZkkgZVE2ct79k"
+    clientSecret: "VPKhom0IHR45HqcBvWzSEPyMk936ecTr"
     # -- OIDC issuer URL
     issuerURL: "http://localhost:8080/realms/headlamp-realm"
     # -- OIDC scopes to be used
