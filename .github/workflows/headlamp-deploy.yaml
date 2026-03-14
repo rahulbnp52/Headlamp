@@ -17,6 +17,8 @@ jobs:
 
       - name: Setup Helm
         uses: azure/setup-helm@v3
+        with:
+          version: v3.14.03.14.0        
 
       - name: Helm Lint
         run: |
