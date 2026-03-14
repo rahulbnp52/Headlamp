@@ -21,7 +21,7 @@ jobs:
       - name: Helm Lint
         run: |
           echo "Running Helm lint..."
-          helm lint ./argocd-apps -f apps/headlamp-app.yaml
+          helm lint ./argocd-apps
 
       - name: Helm Template
         run: |
