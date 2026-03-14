@@ -1259,14 +1259,15 @@ defaultInitContainers:
 postgresql:
   enabled: true
   auth:
-    postgresPassword: ""
+    # Set the PostgreSQL username and password directly
     username: bn_keycloak
-    password: ""
+    password: myStrongPassword
     database: bitnami_keycloak
-    existingSecret: "keycloak-postgresql"
-    secretKeys:
-      userPasswordKey: password
-      userKey: username
+    # Do NOT use an existing secret; Helm will create a fresh secret with these values
+    # existingSecret: "keycloak-postgresql"
+    # secretKeys:
+    #   userPasswordKey: password
+    #   userKey: username
   architecture: standalone
 ## External PostgreSQL configuration
 ## All of these values are only used when postgresql.enabled is set to false
