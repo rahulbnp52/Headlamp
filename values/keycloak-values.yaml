@@ -1263,7 +1263,7 @@ postgresql:
     username: bn_keycloak
     password: ""
     database: bitnami_keycloak
-    existingSecret: ""
+    existingSecret: "keycloak-postgresql"
     secretKeys:
       userPasswordKey: password
   architecture: standalone
