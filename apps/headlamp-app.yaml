@@ -15,7 +15,7 @@
 # │   ├── Chart.yaml
   │   ├── templates
 # │   
-# ├── .gitlab-ci.yml
+# ├── .github/workflows
 # └── headlamp-values/
 #     ├── values.yaml
 
