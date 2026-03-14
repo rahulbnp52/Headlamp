@@ -90,22 +90,22 @@ applications:
   # =================================================================================================
   # 2️⃣ Child App: Headlamp
   # -------------------------------------------------------------------------------------------------
-  headlamp:
-    <<: *common-config
-    metadata:
-      name: headlamp
-    source:
-      <<: *source-repo
-      path: charts/headlamp
-      helm:
-        releaseName: headlamp
-        valueFiles:
-          - ../../values/headlamp-values.yaml
-    destination:
-      <<: *default-destination
-      namespace: kube-system
-    syncPolicy:
-      <<: *common-sync-policy
+  # headlamp:
+  #   <<: *common-config
+  #   metadata:
+  #     name: headlamp
+  #   source:
+  #     <<: *source-repo
+  #     path: charts/headlamp
+  #     helm:
+  #       releaseName: headlamp
+  #       valueFiles:
+  #         - ../../values/headlamp-values.yaml
+  #   destination:
+  #     <<: *default-destination
+  #     namespace: kube-system
+  #   syncPolicy:
+  #     <<: *common-sync-policy
 
 
   # =================================================================================================
