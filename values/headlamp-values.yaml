@@ -66,20 +66,20 @@ config:
     #     scopes: "scopes"
 
     # -- OIDC client ID
-    clientID: ""
+    clientID: "headlamp-client"
     # -- OIDC client secret
-    clientSecret: ""
+    clientSecret: "20mQeXXlC0uYMLjgLjBZkkgZVE2ct79k"
     # -- OIDC issuer URL
-    issuerURL: ""
+    issuerURL: "http://localhost:8082/realms/headlamp-realm"
     # -- OIDC scopes to be used
-    scopes: ""
+    scopes: "openid,email,profile"
     # -- OIDC callback URL
-    callbackURL: ""
+    callbackURL: "http://localhost:3000/callback"
 
     # -- OIDC client to be used during token validation
-    validatorClientID: ""
+    validatorClientID: "headlamp-client"
     # -- OIDC Issuer URL to be used during token validation
-    validatorIssuerURL: ""
+    validatorIssuerURL: "http://localhost:8082/realms/headlamp-realm"
     # -- Use 'access_token' instead of 'id_token' when authenticating using OIDC
     useAccessToken: false
     # -- Use PKCE (Proof Key for Code Exchange) for enhanced security in OIDC flow
