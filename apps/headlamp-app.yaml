@@ -111,21 +111,21 @@ applications:
   # =================================================================================================
   # 3️⃣ Child App: Keycloak
   # -------------------------------------------------------------------------------------------------
-  keycloak:
-    <<: *common-config
-    metadata:
-      name: keycloak
-    source:
-      <<: *source-repo
-      path: charts/keycloak
-      helm:
-        releaseName: keycloak
-        valueFiles:
-          - ../../values/keycloak-values.yaml
-    destination:
-      <<: *default-destination
-      namespace: keycloak
-    syncPolicy:
-      <<: *common-sync-policy
+  # keycloak:
+  #   <<: *common-config
+  #   metadata:
+  #     name: keycloak
+  #   source:
+  #     <<: *source-repo
+  #     path: charts/keycloak
+  #     helm:
+  #       releaseName: keycloak
+  #       valueFiles:
+  #         - ../../values/keycloak-values.yaml
+  #   destination:
+  #     <<: *default-destination
+  #     namespace: keycloak
+  #   syncPolicy:
+  #     <<: *common-sync-policy
 
       
