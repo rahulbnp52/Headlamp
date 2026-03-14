@@ -1,0 +1,108 @@
+# =================================================================================================
+# 🚀 ArgoCD App-of-Apps for Headlamp
+# -------------------------------------------------------------------------------------------------
+# This file defines:
+#   1️⃣ ArgoCD Project configuration
+#   2️⃣ Parent App-of-Apps definition
+#   3️⃣ Child Applications grouped by functional domains
+#
+# Directory Structure Reference (Helm Chart Root):
+# Headlamp/
+# ├── README.md
+# ├── apps/
+# ├── argocd-apps/
+# ├── headlamp-charts/
+# │   ├── Chart.yaml
+  │   ├── templates
+# │   
+# ├── .gitlab-ci.yml
+# └── headlamp-values/
+#     ├── values.yaml
+
+# =================================================================================================
+
+# -------------------------------------------------------------------------------------------------
+# 🔧 Common Configurations (YAML Anchors)
+# -------------------------------------------------------------------------------------------------
+x-common-config: &common-config
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+  project: headlamp
+
+x-sync-policy: &common-sync-policy
+  automated:
+    prune: true
+    selfHeal: true
+  syncOptions:
+    - CreateNamespace=true
+    - ApplyOutOfSyncOnly=true
+
+x-source-repo: &source-repo
+  repoURL: https://github.com/rahulbnp52/Headlamp.git
+  targetRevision: main
+
+x-destination: &default-destination
+  server: https://kubernetes.default.svc
+
+
+# -------------------------------------------------------------------------------------------------
+# 🧱 ArgoCD Project Definition
+# -------------------------------------------------------------------------------------------------
+projects:
+  headlamp:
+    namespace: argocd
+    description: "Headlamp project for Helm-based applications"
+    sourceRepos:
+      - https://github.com/rahulbnp52/Headlamp.git
+    destinations:
+      - namespace: '*'  # Allow deployment in all namespaces
+        server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+      - group: '*'
+        kind: '*'
+    orphanedResources:
+      warn: false
+
+
+# =================================================================================================
+# 🎯 Applications Section
+# =================================================================================================
+applications:
+
+  # -------------------------------------------------------------------------------------------------
+  # 1️⃣ PARENT APP (App-of-Apps)
+  # -------------------------------------------------------------------------------------------------
+  argocd-app-of-apps-headlamp:
+    <<: *common-config
+    metadata:
+      name: argocd-app-of-apps-headlamp
+    source:
+      <<: *source-repo
+      path: apps
+    destination:
+      <<: *default-destination
+      namespace: argocd
+    syncPolicy:
+      <<: *common-sync-policy
+
+
+  # =================================================================================================
+  # 2️⃣ Child App: Headlamp
+  # -------------------------------------------------------------------------------------------------
+  headlamp:
+    <<: *common-config
+    metadata:
+      name: headlamp
+    source:
+      <<: *source-repo
+      path: headlamp-charts
+      helm:
+        releaseName: headlamp
+        valueFiles:
+          - ../headlamp-values/values.yaml
+    destination:
+      <<: *default-destination
+      namespace: kube-system
+    syncPolicy:
+      <<: *common-sync-policy
